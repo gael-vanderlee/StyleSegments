@@ -42,7 +42,8 @@ if __name__ == "__main__":
 
                 # Show outputs
                 cv2.imshow("Original image", original)
-                cv2.imshow("Mask image", mask)
+                cv2.imshow("Mask image", mask.astype("uint8"))
                 cv2.imshow("Stylized image", stylized)
                 cv2.imshow("Final image", output)
+                cv2.waitKey()
 

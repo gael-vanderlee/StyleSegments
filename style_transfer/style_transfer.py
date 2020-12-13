@@ -6,6 +6,7 @@ import torch.optim as optim
 from torchvision import transforms, models
 from config import styles_folder, ims_config, stylized_folder
 from pathlib import Path
+from tqdm import trange
 
 
 class StyleTransferModel:
@@ -30,8 +31,8 @@ class StyleTransferModel:
         self.style_weight = 1e6  # beta
 
         self.show_every = 400
-        self.steps = 100  # decide how many iterations to update your image (5000)
-        self.max_size = 400
+        self.steps = 4000  # decide how many iterations to update your image (5000)
+        self.max_size = 800
 
     def load_image(self, img_path, shape=None):
         """ Load in and transform an image, making sure the image
@@ -108,7 +109,7 @@ class StyleTransferModel:
         return gram
 
     def train(self, target, optimizer, content_features, style_grams):
-        for ii in range(1, self.steps + 1):
+        for ii in trange(1, self.steps + 1, desc="Training the StyleTransfer Model"):
 
             # Calculate the content loss
             target_features = self.get_features(target)
