@@ -16,3 +16,20 @@ segmentation_folder = output_folder / "segmentations/"
 segmentation_folder.mkdir(parents=True, exist_ok=True)
 stylized_folder = output_folder / "stylized/"
 stylized_folder.mkdir(parents=True, exist_ok=True)
+combined_folder = output_folder / "combined/"
+combined_folder.mkdir(parents=True, exist_ok=True)
+
+images = ["cat.jpg"]
+
+ims_config = {
+    "cat.jpg": {
+        "seg_models": ["VOC"],
+        "styles": ["cartoon.jpg"],
+        "class": [8]   # One per style
+    }
+}
+
+images_paths = [images_folder / image for image in images]
+for im_path in images_paths:
+    assert im_path.exists(), f"{im_path} doesn't exist"
+    assert im_path.name in ims_config, f"Please choose a config for {im_path.name}"

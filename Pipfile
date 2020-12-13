@@ -4,18 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyyaml = "*"
-coolname = "*"
-tabulate = "*"
-tensorboardx = "*"
-runx = "==0.0.6"
 torch = "*"
 opencv-python = "*"
 torchvision = "*"
 tqdm = "*"
 scikit-image = "*"
 keras = "*"
-keras-segmentation = "*"
 tensorflow-gpu = "*"
 
 [dev-packages]
