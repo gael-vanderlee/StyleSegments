@@ -4,6 +4,7 @@ from config import segmentation_folder
 
 def transfer_styles(image_path, model_name):
     assert image_path.exists(), f"{image_path} does not exist"
+
     out_path = (segmentation_folder / (image_path.stem + "_" + model_name + ".png")).as_posix()
 
     if model_name == "ADE20k":
@@ -15,11 +16,11 @@ def transfer_styles(image_path, model_name):
     else:
         raise ValueError(f"You chose {model_name} but available models are ADE20k, Cityscapes and VOC")
 
-    print(f"Running segmentation for {image_path} with {model_name}")
+    print(f"\nRunning segmentation for {image_path} with {model_name}")
     out = model.predict_segmentation(
         inp=image_path.as_posix(),
         out_fname=out_path
     )
-    print(f"Finished, results saved at {out_path}")
+    print(f"Finished segmentation, results saved at {out_path}")
 
     return out

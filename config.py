@@ -19,11 +19,18 @@ stylized_folder.mkdir(parents=True, exist_ok=True)
 combined_folder = output_folder / "combined/"
 combined_folder.mkdir(parents=True, exist_ok=True)
 
+overwrite = False
+
 images = ["cat.jpg"]
 
 ims_config = {
     "cat.jpg": {
         "seg_models": ["VOC"],
+        "styles": ["cartoon.jpg"],
+        "class": [0]   # One per style
+    },
+    "ville.png": {
+        "seg_models": ["VOC", "ADE20k", "Cityscapes"],
         "styles": ["cartoon.jpg"],
         "class": [8]   # One per style
     }

@@ -4,14 +4,14 @@ import numpy as np
 import torch
 import torch.optim as optim
 from torchvision import transforms, models
-from config import styles_folder, ims_config, stylized_folder
+from config import styles_folder, ims_config, stylized_folder, overwrite
 from pathlib import Path
 from tqdm import trange
 
 
 class StyleTransferModel:
 
-    def __init__(self, images_paths, im_styles, show_images=True):
+    def __init__(self, images_paths, im_styles, show_images=True, overwrite=False):
         self.model = models.vgg19(pretrained=True).features
 
         for param in self.model.parameters():
@@ -31,8 +31,9 @@ class StyleTransferModel:
         self.style_weight = 1e6  # beta
 
         self.show_every = 400
-        self.steps = 4000  # decide how many iterations to update your image (5000)
+        self.steps = 3000  # decide how many iterations to update your image (5000)
         self.max_size = 800
+        self.overwrite = overwrite
 
     def load_image(self, img_path, shape=None):
         """ Load in and transform an image, making sure the image
@@ -153,6 +154,16 @@ class StyleTransferModel:
         for image_path in self.images_paths:
             output[image_path] = {}
             for style_name in self.im_styles[image_path.name]["styles"]:
+                out_path = stylized_folder / (image_path.stem + "_" + Path(style_name).stem + ".png")
+
+                if out_path.exists() and not self.overwrite:
+                    output[image_path][style_name] = np.array(Image.open(out_path.as_posix()))
+                    print(f"Loaded {out_path} from file")
+                    if self.show_images:
+                        plt.imshow(output[image_path][style_name])
+                        plt.show()
+                    continue
+
                 content = self.load_image(image_path.as_posix()).to(self.device)
                 style = self.load_image((styles_folder / style_name).as_posix(), shape=content.shape[-2:]).to(self.device)
 
@@ -180,11 +191,10 @@ class StyleTransferModel:
                     ax2.imshow(self.im_convert(target))
 
                 # Save the output
-                out_path = stylized_folder / (image_path.stem + "_" + Path(style_name).stem + ".png")
                 out_image = (self.im_convert(target) * 255).astype(np.uint8)
                 im = Image.fromarray(out_image)
                 im.save(out_path.as_posix())
-                print(f"Saved image at {out_path}")
+                print(f"\nSaved stylized image at {out_path}")
                 output[image_path][style_name] = out_image
 
         return output
