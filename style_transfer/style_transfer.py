@@ -158,7 +158,7 @@ class StyleTransferModel:
 
                 if out_path.exists() and not self.overwrite:
                     output[image_path][style_name] = np.array(Image.open(out_path.as_posix()))
-                    print(f"Loaded {out_path} from file")
+                    print(f"\nLoaded {out_path} from file")
                     if self.show_images:
                         plt.imshow(output[image_path][style_name])
                         plt.show()
