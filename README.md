@@ -6,9 +6,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/ga%C3%ABl-van-der-lee-731b26143/]
 
 
 
@@ -73,7 +70,9 @@ apply style transfer on certain objects or parts of an image.
 
 Input Image             |Input Style                | Output image
 :----------------------:|:-----------------------:|:----------------:
-![Image](input/images/cat.jpg)|![Style](input/styles/cartoon.jpg)|![Output](output/combined/cat_cartoon.jpeg)
+<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/images/cat.jpg" width="500" />|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/styles/cartoon.jpg" width="350"/>|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/output/combined/cat_cartoon.jpeg" width="500" />
+
+
 
 
 
@@ -167,6 +166,9 @@ Project Link: [https://github.com/Gvanderl/StyleSegments](https://github.com/Gva
 * [Image Style Transfer Using Convolutional Neural Networks](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)
 * [VGG19](https://arxiv.org/abs/1409.1556)
 * [Style transfer DNNs](https://github.com/LaurentVeyssier/Style-transfer-with-Deep-Neural-Network)
+
+
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/ga%C3%ABl-van-der-lee-731b26143/]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
