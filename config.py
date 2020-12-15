@@ -23,7 +23,7 @@ overwrite = False
 mask_blur_size = 50
 
 # Images to process for this run
-images = ["cat.jpg"]
+images = ["ville.png"]
 
 ims_config = {
     "cat.jpg": {

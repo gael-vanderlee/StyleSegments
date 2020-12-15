@@ -26,7 +26,7 @@ if __name__ == "__main__":
                 # Get the data for this image, style and model
                 seg_class = ims_config[im_path.name]["class"][i]
                 mask = masks[im_path][seg_model].astype("uint8")
-                stylized = styles[im_path][style]
+                stylized = cv2.cvtColor(styles[im_path][style], cv2.COLOR_RGB2BGR)
 
                 # Apply mask and get final image
                 original = cv2.imread(im_path.as_posix())
@@ -44,5 +44,6 @@ if __name__ == "__main__":
                 # Show outputs
                 cv2.imshow("Original image", original)
                 cv2.imshow("Stylized image", stylized)
+                cv2.imshow("Mask", (mask * 255).astype("uint8")[:, :, 0])
                 cv2.imshow("Final image", output)
                 cv2.waitKey()

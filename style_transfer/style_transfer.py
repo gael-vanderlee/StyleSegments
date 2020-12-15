@@ -31,7 +31,7 @@ class StyleTransferModel:
         self.style_weight = 1e6  # beta
 
         self.show_every = 400
-        self.steps = 3000  # decide how many iterations to update your image (5000)
+        self.steps = 5000  # decide how many iterations to update your image (5000)
         self.max_size = 800
         self.overwrite = overwrite
 
