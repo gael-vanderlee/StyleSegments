@@ -85,10 +85,11 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* For vitual environnment management: [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/install.html)
+* For virtual envs: [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/install.html)
   ```sh
   pip install --user pipenv
   ```
+Or use your virtual environment manager of choice, requirements are in the [Pipfile](Pipfile)
 
 ### Installation
 
@@ -134,7 +135,6 @@ All the input and output paths and folder can also be found and modified in [con
 ## Roadmap
 
 See the [open issues](https://github.com/Gvanderl/StyleSegments/issues) for a list of proposed features (and known issues).
-
 
 <!-- CONTRIBUTING -->
 ## Contributing

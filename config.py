@@ -20,21 +20,21 @@ combined_folder = output_folder / "combined/"
 combined_folder.mkdir(parents=True, exist_ok=True)
 
 overwrite = False
-mask_blur_size = 100
+mask_blur_size = 50
 
 # Images to process for this run
-images = ["ville.png"]
+images = ["cat.jpg"]
 
 ims_config = {
     "cat.jpg": {
         "seg_models": ["VOC"],
         "styles": ["cartoon.jpg"],
-        "class": [0]   # One per style
+        "class": [8]   # One per model
     },
     "ville.png": {
-        "seg_models": ["VOC", "ADE20k", "Cityscapes"],
-        "styles": ["cartoon.jpg"],
-        "class": [8]   # One per model
+        "seg_models": ["ADE20k"],
+        "styles": ["mondrian.jpg"],
+        "class": [1]   # One per model
     }
 }
 

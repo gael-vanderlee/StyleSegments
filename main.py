@@ -1,4 +1,4 @@
-from config import images_paths, ims_config, combined_folder, overwrite
+from config import images_paths, ims_config, combined_folder, overwrite, mask_blur_size
 from segmentation.segment_image import transfer_styles
 from style_transfer.style_transfer import StyleTransferModel
 import cv2
@@ -20,8 +20,8 @@ if __name__ == "__main__":
 
     # Combine the two
     for im_path in images_paths:
-        for seg_model in ims_config[im_path.name]["seg_models"]:
-            for i, style in enumerate(ims_config[im_path.name]["styles"]):
+        for i, seg_model in enumerate(ims_config[im_path.name]["seg_models"]):
+            for style in ims_config[im_path.name]["styles"]:
 
                 # Get the data for this image, style and model
                 seg_class = ims_config[im_path.name]["class"][i]
@@ -30,13 +30,13 @@ if __name__ == "__main__":
 
                 # Apply mask and get final image
                 original = cv2.imread(im_path.as_posix())
-                output = cv2.resize(original, stylized.shape[:2][::-1])
                 original = cv2.resize(original, stylized.shape[:2][::-1])
                 mask = cv2.resize(mask, stylized.shape[:2][::-1])
-                mask = mask == seg_class
+                mask = (mask == seg_class).astype("uint8")
+                mask = cv2.blur(mask * 255, (mask_blur_size, mask_blur_size)) / 255
                 mask = np.expand_dims(mask, 2)
                 mask = np.repeat(mask, 3, axis=2)
-                output[mask] = stylized[mask]
+                output = (original.astype(float) * (1 - mask) + stylized.astype(float) * mask).astype("uint8")
                 impath = combined_folder / (im_path.stem + "_" + seg_model + "_" + Path(style).stem + ".jpeg")
                 cv2.imwrite(impath.as_posix(), output)
                 print(f"\n***** DONE *****\nSaved final image to {impath}")
@@ -46,4 +46,3 @@ if __name__ == "__main__":
                 cv2.imshow("Stylized image", stylized)
                 cv2.imshow("Final image", output)
                 cv2.waitKey()
-
