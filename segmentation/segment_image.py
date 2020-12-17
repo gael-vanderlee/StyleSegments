@@ -13,6 +13,9 @@ def transfer_styles(image_path, model_name):
         model = pspnet_101_cityscapes()
     elif model_name == "VOC":
         model = pspnet_101_voc12()
+    elif model_name == "resnet_VOC":
+        model = resnet_pspnet_VOC12_v0_1()
+
     else:
         raise ValueError(f"You chose {model_name} but available models are ADE20k, Cityscapes and VOC")
 

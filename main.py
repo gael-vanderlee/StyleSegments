@@ -37,9 +37,9 @@ if __name__ == "__main__":
                 mask = np.expand_dims(mask, 2)
                 mask = np.repeat(mask, 3, axis=2)
                 output = (original.astype(float) * (1 - mask) + stylized.astype(float) * mask).astype("uint8")
-                impath = combined_folder / (im_path.stem + "_" + seg_model + "_" + Path(style).stem + ".jpeg")
+                impath = combined_folder / (im_path.stem + "_" + seg_model + "_" + Path(style).stem + ".png")
                 cv2.imwrite(impath.as_posix(), output)
-                print(f"\n***** DONE *****\nSaved final image to {impath}")
+                print(f"\nSaved final image to {impath}")
 
                 # Show outputs
                 cv2.imshow("Original image", original)
@@ -47,3 +47,5 @@ if __name__ == "__main__":
                 cv2.imshow("Mask", (mask * 255).astype("uint8")[:, :, 0])
                 cv2.imshow("Final image", output)
                 cv2.waitKey()
+
+    print("\n***** DONE *****")
