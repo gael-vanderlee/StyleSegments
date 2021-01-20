@@ -9,8 +9,7 @@
 
 docker build . --tag style:latest
 
-docker run  --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --gpus all  -it --rm --user=$(id -u $USER):$(id -g $USER) --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw"  --mount type=bind,source="./",target=/workspace \
- -v `pwd`:/var stylegan:latest
+docker run  --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --gpus all -it --entrypoint bash style:latest 
 
 
 
