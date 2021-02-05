@@ -70,7 +70,7 @@ apply style transfer on certain objects or parts of an image.
 
 Input Image             |Input Style                | Output image
 :----------------------:|:-----------------------:|:----------------:
-<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/images/cat.jpg" width="500" />|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/styles/cartoon.jpg" width="350"/>|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/output/combined/cat_cartoon.jpeg" width="500" />
+<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/images/ville.png" width="500" />|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/input/styles/mondrian.jpg" width="350"/>|<img src="https://raw.githubusercontent.com/Gvanderl/StyleSegments/master/output/combined/ville_ADE20k_mondrian.jpeg" width="500" />
 
 
 
