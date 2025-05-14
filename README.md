@@ -21,13 +21,6 @@
   <p align="center">
     Apply style transfer selectively on certain objects of an image
     <br />
-    <a href="https://github.com/Gvanderl/StyleSegments"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/Gvanderl/StyleSegments">View Demo</a>
-    ·
-    <a href="https://github.com/Gvanderl/StyleSegments/issues">Report Bug</a>
-    ·
     <a href="https://github.com/Gvanderl/StyleSegments/issues">Request Feature</a>
   </p>
 
