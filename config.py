@@ -28,7 +28,7 @@ images = ["building.jpg", "cat.jpg"]
 ims_config = {
     "cat.jpg": {
         "seg_models": ["VOC"],  # ["ADE20k", "Cityscapes", "VOC", "resnet_VOC"]
-        "styles": ["cartoon.jpg", "mondrian.jpg", "misty.jpg"],
+        "styles": ["cartoon.jpg", "mondrian.jpg", "van_gogh.jpg"],
         "class": [8]   # One per model
     },
     "ville.png": {
@@ -38,12 +38,12 @@ ims_config = {
     },
     "chicago.jpg": {
         "seg_models": ["ADE20k"],
-        "styles": ["van_gogh.jpg"],
+        "styles": ["mondrian.jpg"],
         "class": [2]  # One per model
     },
     "building.jpg": {
         "seg_models": ["ADE20k"],
-        "styles": ["misty.jpg"],
+        "styles": ["van_gogh.jpg"],
         "class": [1]  # One per model
     }
 }
